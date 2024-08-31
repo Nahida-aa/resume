@@ -1,5 +1,5 @@
 <div style="display: flex;">
-  <img src="https://avatars.githubusercontent.com/u/12345678?v=4" alt="Your Avatar" width="120" style="margin-right: 40px;" />
+  <img src="https://avatars.githubusercontent.com/u/96083926?v=4" alt="Avatar" width="120" style="margin-right: 40px;" />
   <ul style="list-style-type: none; padding: 0; margin: 0;">
     <li> Name: aa Nahida</li>
     <li> Age: 22</ls>
@@ -7,10 +7,10 @@
     <li> Email: <a href="mailto:Nahida-aa@oulook.com">Nahida-aa@oulook.com</a></li>
     <li> GitHub: <a href="https://github.com/Nahida-aa">https://github.com/Nahida-aa</a></li>
   </ul>
-  <div style="text-align: right;">
+  <p style="text-align: right;">
     <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
     <a href='https://example.com/cn'">[切换为中文]</a>
-  </div>
+  </p>
 </div>
 
 # Education
@@ -18,7 +18,7 @@
 - **2021.9-2025.6 &nbsp; &nbsp; &nbsp; B.Sc. in School of Medicine, [Wuhan University of Science and Technology](https://www.wust.edu.cn/)**
   - [Data Structure](https://github.com/Nahida-aa/Data-Structure) | [Principles of Computer Composition](https://github.com/Nahida-aa/Computer_Composition) | [Operating System](https://github.com/Nahida-aa/OS) | [Computer Network](https://github.com/Nahida-aa/Computer-Network)
   - [Machine Learning](https://github.com/Nahida-aa/ML) | [Deep Learning](https://github.com/Nahida-aa/DL)
-  - 高等数学满绩, 线性代数满绩, 基础化学满绩, 卫生统计学
+  - Perfect scores in Calculus, Linear Algebra, Basic Chemistry, and Health Statistics
 
 # Technical skills
 
@@ -76,4 +76,3 @@
 
 - **中国地质大学科学营 2019.7**
   - 描述：参加青少年科学营(中国地质大学分营)，获得定向越野一等奖。
-
