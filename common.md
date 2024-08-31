@@ -26,7 +26,7 @@
 
 ### Familiar technologies: [Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/Python) | [ML](https://github.com/Nahida-aa/ML)
 
-### know technologies: [FastAPI](https://github.com/Nahida-aa/FastAPI) | [C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network) | [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
+### Know technologies: [FastAPI](https://github.com/Nahida-aa/FastAPI) | [C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network) | [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
 
 ### Other technologies where I have notions: [TensorFlow](https://github.com/Nahida-aa/AI) | [PyTorch](https://github.com/Nahida-aa/AI) | [React](https://github.com/Nahida-aa/TS)
 
