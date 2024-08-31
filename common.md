@@ -1,8 +1,26 @@
-<!-- <div style="display: flex;">
+<script>
+    function calculateAge(birthday) {
+        const birthDate = new Date(birthday);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const ageElement = document.getElementById("age");
+        const birthday = "2002-11-10";
+        ageElement.textContent = `Age: ${calculateAge(birthday)}`;
+    });
+</script>
+<div style="display: flex;">
   <img src="https://avatars.githubusercontent.com/u/96083926?v=4" alt="Avatar" width="120" style="margin-right: 40px;" />
   <ul style="list-style-type: none; padding: 0; margin: 0;">
     <li> Name: aa Nahida</li>
-    <li> Age: 22</ls>
+    <li id="age">Age: </li>
     <li> Phone: 18162711944</li>
     <li> Email: <a href="mailto:Nahida-aa@oulook.com">Nahida-aa@oulook.com</a></li>
     <li> GitHub: <a href="https://github.com/Nahida-aa">https://github.com/Nahida-aa</a></li>
@@ -11,7 +29,7 @@
     <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
     <a href='https://nahida-aa.org.edu.kg/resume/index.cn.html'">[切换为中文]</a>
   </p>
-</div> -->
+</div>
 
 # Education
 
