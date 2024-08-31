@@ -1,12 +1,21 @@
-- Name: aa Nahida
-- Age: 22
-- Phone: 18162711944
-- Email: <Nahida-aa@oulook.com>
-- GitHub: <https://github.com/Nahida-aa>
+<div style="display: flex; ">
+  <img src="https://avatars.githubusercontent.com/u/12345678?v=4" alt="Your Avatar" width="120" style="margin-right: 40px;" />
+  <ul style="list-style-type: none; padding: 0; margin: 0;">
+    <li> Name: aa Nahida</li>
+    <li> Age: 22</ls>
+    <li> Phone: 18162711944</li>
+    <li> Email: <a href="mailto:Nahida-aa@oulook.com">Nahida-aa@oulook.com</a></li>
+    <li> GitHub: <a href="https://github.com/Nahida-aa">https://github.com/Nahida-aa</a></li>
+  </ul>
+  <div style="text-align: right;">
+  <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
+  <button onclick="window.location.href='https://example.com/cn'">切换为中文</button>
+  </div>
+</div>
 
 # Education
 
-- **2021.9-2025.6 &nbsp; &nbsp; &nbsp; 学士, 医学院, [武汉科技大学](https://www.wust.edu.cn/)**
+- **2021.9-2025.6 &nbsp; &nbsp; &nbsp; B.Sc. in School of Medicine, [Wuhan University of Science and Technology](https://www.wust.edu.cn/)**
   - [Data Structure](https://github.com/Nahida-aa/Data-Structure) | [Principles of Computer Composition](https://github.com/Nahida-aa/Computer_Composition) | [Operating System](https://github.com/Nahida-aa/OS) | [Computer Network](https://github.com/Nahida-aa/Computer-Network)
   - [Machine Learning](https://github.com/Nahida-aa/ML) | [Deep Learning](https://github.com/Nahida-aa/DL)
   - 高等数学满绩, 线性代数满绩, 基础化学满绩, 卫生统计学
@@ -23,7 +32,7 @@
 
 ### know technologies
 
-[C/C++](https://www.cplusplus.com/) | [JavaScript](https://www.javascript.com/)
+[C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://www.javascript.com/)
 | [Vue.js](https://vuejs.org/) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://www.postgresql.org/) | [MongoDB](https://www.mongodb.com/)
 
 ### Other technologies where I have notions
@@ -32,7 +41,7 @@
 
 ### Tools
 
-[Git](https://git-scm.com/) | [Linux](https://www.linux.org/) | [Docker](https://www.docker.com/) | [Postman](https://postman.com)
+[Git](https://github.com/Nahida-aa/Data-Structure) | [Linux](https://github.com/Nahida-aa/OS) | [Docker](https://www.docker.com/) | [Postman](https://postman.com)
 
 ### Other skills
 
