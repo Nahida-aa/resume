@@ -24,26 +24,13 @@
 
 ### Currently learning: [LLM](https://github.com/Nahida-aa/LLM)
 
-### Familiar technologies
+### Familiar technologies: [Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/Python) | [ML](https://github.com/Nahida-aa/ML)
 
-[Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/Python) | [FastAPI](https://github.com/Nahida-aa/FastAPI) | [ML](https://github.com/Nahida-aa/ML)
+### know technologies: [FastAPI](https://github.com/Nahida-aa/FastAPI) | [C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network) | [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
 
-### know technologies
+### Other technologies where I have notions: [TensorFlow](https://github.com/Nahida-aa/AI) | [PyTorch](https://github.com/Nahida-aa/AI) | [React](https://github.com/Nahida-aa/TS)
 
-[C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network)
-| [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
-
-### Other technologies where I have notions
-
-[TensorFlow](https://github.com/Nahida-aa/AI) | [PyTorch](https://github.com/Nahida-aa/AI) | [React](https://github.com/Nahida-aa/TS)
-
-### Tools
-
-[Git](https://github.com/Nahida-aa/Data-Structure) | [Linux](https://github.com/Nahida-aa/OS) | [Docker](https://github.com/Nahida-aa/Docker) | [Postman](https://github.com/Nahida-aa/API)
-
-### Other skills
-
-[Mathematical modeling](https://github.com/Nahida-aa/mm) | [Regression analysis](https://github.com/Nahida-aa/mm)
+### Tools: [Git](https://github.com/Nahida-aa/Data-Structure) | [Linux](https://github.com/Nahida-aa/OS) | [Docker](https://github.com/Nahida-aa/Docker) | [Postman](https://github.com/Nahida-aa/API)
 
 # Experience
 
@@ -73,3 +60,7 @@
   - Description: National Third Prize
 - **China University of Geosciences Science Camp, July 2019**
   - Description: Participated in the Youth Science Camp (China University of Geosciences branch) and won the first prize in orienteering.
+
+# Other
+
+- **douyin Achievement**: Single video with highest views of 77k and 3.3k likes.
