@@ -1,4 +1,4 @@
-<div style="display: flex;">
+<!-- <div style="display: flex;">
   <img src="https://avatars.githubusercontent.com/u/96083926?v=4" alt="Avatar" width="120" style="margin-right: 40px;" />
   <ul style="list-style-type: none; padding: 0; margin: 0;">
     <li> Name: aa Nahida</li>
@@ -9,9 +9,9 @@
   </ul>
   <p style="text-align: right;">
     <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
-    <a href='https://example.com/cn'">[切换为中文]</a>
+    <a href='https://nahida-aa.org.edu.kg/resume/index.cn.html'">[切换为中文]</a>
   </p>
-</div>
+</div> -->
 
 # Education
 
@@ -22,26 +22,24 @@
 
 # Technical skills
 
-**Statistics: <https://wakatime.com/@Nahida_aa>**
-
 ### Currently learning: [LLM](https://github.com/Nahida-aa/LLM)
 
 ### Familiar technologies
 
-[Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/MySQL) | [Flask](https://github.com/Nahida-aa/Flask) | [FastAPI](https://github.com/Nahida-aa/FastAPI) | [ML](https://github.com/Nahida-aa/ML)
+[Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/Python) | [FastAPI](https://github.com/Nahida-aa/FastAPI) | [ML](https://github.com/Nahida-aa/ML)
 
 ### know technologies
 
-[C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://www.javascript.com/)
-| [Vue.js](https://vuejs.org/) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://www.postgresql.org/) | [MongoDB](https://www.mongodb.com/)
+[C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network)
+| [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://www.djangoproject.com/) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
 
 ### Other technologies where I have notions
 
-[TensorFlow](https://www.tensorflow.org/) | [PyTorch](https://pytorch.org/) | [React](https://reactjs.org/)
+[TensorFlow](https://github.com/Nahida-aa/AI) | [PyTorch](https://github.com/Nahida-aa/AI) | [React](https://github.com/Nahida-aa/TS)
 
 ### Tools
 
-[Git](https://github.com/Nahida-aa/Data-Structure) | [Linux](https://github.com/Nahida-aa/OS) | [Docker](https://www.docker.com/) | [Postman](https://postman.com)
+[Git](https://github.com/Nahida-aa/Data-Structure) | [Linux](https://github.com/Nahida-aa/OS) | [Docker](https://github.com/Nahida-aa/Docker) | [Postman](https://github.com/Nahida-aa/API)
 
 ### Other skills
 
@@ -49,30 +47,29 @@
 
 # Experience
 
-- **情感分析, <https://ai.Nahida-aa.su.kg/>**
-  - 时间：2023.6 - now
-  - 描述：为了分析评论、对象等的情感，我们团队开发了一个文本分类模型。
-  - 技术：Python, TensorFlow, NLP
-  - 贡献：负责数据预处理、模型训练和评估，优化模型性能，提升分类准确率。
+- **Sentiment Analysis, <https://ai.Nahida-aa.su.kg/>**
+  - Duration: June 2023 - now
+  - Description: Developed a text classification model to analyze the sentiment of reviews and other textual data.
+  - Technologies: Python, TensorFlow, NLP
+  - Contribution: Responsible for data preprocessing, model training and evaluation, optimizing model performance, and improving classification accuracy.
 
-- **声音生成, <https://ai.Nahida-aa.su.kg/>**
-  - 时间：2022.3 - now
-  - 描述：为了生成多元声音，我们团队开发了一个声音生成系统。该项目使用Python和Tacotron 2进行开发，旨在生成高质量的语音文件。
-  - 技术：Python, Tacotron 2, WaveGlow
-  - 贡献：负责模型训练和优化，生成不同风格的语音文件。
+- **aAPI, <https://api.Nahida-aa.su.kg/>**
+  - Duration: December 2023 - March 2024
+  - Description: To facilitate the sharing and usage of APIs for myself and users, our team developed an API sharing platform. The platform was developed using `FastAPI` and `Vue.js`, supporting user registration, login, publishing APIs, commenting, and other features.
+  - Technologies: FastAPI, Vue.js, MySQL
+  - Contribution: Responsible for backend API development and frontend interface design.
 
-- **api分享, <https://api.Nahida-aa.su.kg/>**
-  - 时间：2023.12 - 2024.3
-  - 描述：为了方便自己和用户分享和使用API，我们团队开发了一个API分享平台。该平台使用FastAPI和Vue.js进行开发，支持用户注册、登录、发布API、评论等功能。
-  - 技术：FastAPI, Vue.js, MySQL
-  - 贡献：负责后端API开发和前端界面设计，确保系统稳定性和安全性。
+- **blog, <https://home.Nahida-aa.su.kg/>**
+  - Duration: June 2023 - March 2024
+  - Description: Developed a personal blog website to share personal insights and technical articles. The project was developed using `Flask` and `Vue.js`, supporting user registration, login, posting articles, commenting, and other features.
+  - Technologies: Flask, Vue.js, MySQL, Docker
+  - Contribution: Responsible for both backend and frontend development, as well as database design.
 
 # Awards
 
-- **数学建模竞赛 2024.5**
-  - 描述：主要负责建模和编程，通过ai和搜索引擎找到相关资料，使用Python进行数据分析、预处理和使用K-means聚类模型和FFT模型, 根据十字路口98万行车的位置-时间数据计算出红绿灯周期
-- **全国大学生数学竞赛 2023.11**
-  - 描述：国家三等奖
-
-- **中国地质大学科学营 2019.7**
-  - 描述：参加青少年科学营(中国地质大学分营)，获得定向越野一等奖。
+- **Mathematical Modeling Competition, May 2024**
+  - Description: Primarily responsible for modeling and programming. Searched for relevant information using AI and search engines. Used Python for data analysis and preprocessing, and applied K-means clustering and FFT models to calculate traffic light cycles based on 980,000 vehicle position-time data at intersections.
+- **China College Student Mathematics Competition, November 2023**
+  - Description: National Third Prize
+- **China University of Geosciences Science Camp, July 2019**
+  - Description: Participated in the Youth Science Camp (China University of Geosciences branch) and won the first prize in orienteering.
