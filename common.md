@@ -16,7 +16,7 @@
 # Education
 
 - **2021.9-2025.6 &nbsp; &nbsp; &nbsp; B.Sc. in School of Medicine, [Wuhan University of Science and Technology](https://www.wust.edu.cn/)**
-  - [Data Structure](https://github.com/Nahida-aa/Data-Structure) | [Principles of Computer Composition](https://github.com/Nahida-aa/Computer_Composition) | [Operating System](https://github.com/Nahida-aa/OS) | [Computer Network](https://github.com/Nahida-aa/Computer-Network)
+  - [Data Structure](https://github.com/Nahida-aa/Data-Structure) | [Computer Composition](https://github.com/Nahida-aa/Computer_Composition) | [Operating System](https://github.com/Nahida-aa/OS) | [Computer Network](https://github.com/Nahida-aa/Computer-Network)
   - [Machine Learning](https://github.com/Nahida-aa/ML) | [Deep Learning](https://github.com/Nahida-aa/DL)
   - Perfect scores in Calculus, Linear Algebra, Basic Chemistry, and Health Statistics
 
