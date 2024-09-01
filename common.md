@@ -16,7 +16,7 @@
         ageElement.textContent = `Age: ${calculateAge(birthday)}`;
     });
 </script>
-<div style="display: flex;">
+<!-- <div style="display: flex;">
   <img src="https://avatars.githubusercontent.com/u/96083926?v=4" alt="Avatar" width="120" style="margin-right: 40px;" />
   <ul style="list-style-type: none; padding: 0; margin: 0;">
     <li> Name: aa Nahida</li>
@@ -29,7 +29,7 @@
     <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
     <a href='https://nahida-aa.org.edu.kg/resume/index.cn.html'">[切换为中文]</a>
   </p>
-</div>
+</div> -->
 
 # Education
 
@@ -42,7 +42,7 @@
 
 ### Currently learning: [LLM](https://github.com/Nahida-aa/LLM)
 
-### Familiar technologies: [Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/PyWeb) | [ML](https://github.com/Nahida-aa/ML)
+### Familiar technologies: [Python](https://github.com/Nahida-aa/Python) | [MySQL](https://github.com/Nahida-aa/DBMS) | [Flask](https://github.com/Nahida-aa/PyWeb) | [DL](https://github.com/Nahida-aa/DL)
 
 ### Know technologies: [FastAPI](https://github.com/Nahida-aa/PyWeb) | [C/C++](https://github.com/Nahida-aa/OS) | [JavaScript](https://github.com/Nahida-aa/Computer-Network) | [Vue.js](https://github.com/Nahida-aa/TS) | [Django](https://github.com/Nahida-aa/PyWeb) | [PostgreSQL](https://github.com/Nahida-aa/DBMS) | [MongoDB](https://github.com/Nahida-aa/DBMS)
 
