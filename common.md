@@ -27,7 +27,7 @@
   </ul>
   <p style="text-align: right;">
     <a href="https://wakatime.com/@5e13fdf2-a670-4afa-b581-82c3534b9c91"><img src="https://wakatime.com/badge/user/5e13fdf2-a670-4afa-b581-82c3534b9c91.svg" alt="Total time coded since Apr 28 2024" /></a><br />
-    <a href='https://nahida-aa.org.edu.kg/resume/index.cn.html'">[切换为中文]</a>
+    <a href='https://nahida-aa.org.edu.kg/resume/index.cn.html'>[切换为中文]</a>
   </p>
 </div>
 
