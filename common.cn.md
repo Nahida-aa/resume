@@ -133,7 +133,7 @@ tanstack, bun, nextjs, orpc, postgres, drizzle, hono
   b. 落地与验证：选定 WGSL/Vulkan 路径后分离 RTF 0.11（tch 基线
     1.03，约 9×），用 corr 1.0000 与上游 CLI 逐样本一致（maxdiff 0）
     验证数值可信
-  c. 后端能力探测：780M(gfx1103)上 Burn/CubeCL 不支持 bf16 matmul，改用 f16 后端绕过(同 2 字节、容量不变);并写探针覆盖加减乘除、标量、sigmoid/sqrt/exp 与多维输入,确认 elementwise 一侧无误
+  c. 后端能力探测：780M(gfx1103)上 Burn/CubeCL 不支持 bf16 matmul，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6（PyTorch CPU 基线 4.2–6.1）；并写探针覆盖加减乘除、标量、sigmoid/sqrt/exp 与多维输入，确认 elementwise 一侧无误
   d. 结果可靠性：记录 ROCm 25/25 SIGSEGV、HIPBLAS hang、缺
     gfx1103 Tensile 内核等失败路径；验证 GPU Hang 会连锁污染
     后续进程，实验改为每 trial 独立子进程
@@ -167,12 +167,12 @@ https://github.com/Nahida-aa/LocalDub
 
 ##### 项目描述
 
-语音处理多后端实验与 Rust 化工作区，覆盖 ASR（whisper）、音源分离（demucs）、TTS（VoxCPM / CosyVoice），横向实测 Rust（Burn / ort）、C++（whisper.cpp / demucs.cpp，GGML 与 ONNX Runtime 后端）、PyTorch 与云端在CPU / Vulkan / ROCm 等设备上的推理表现。同一套底层能力（模型加载、权重 dtype 泵、后端抽象、基准与数值校验）支撑，故放在同一工作区。为 LocalDub 的语音步骤提供选型与实现，但它本身是覆盖全链路的独立实验线，不是某一环节的附属。
+语音处理多后端实验与 Rust 化工作区，覆盖 ASR（whisper）、音源分离（demucs）、TTS（VoxCPM / CosyVoice 权重与环境准备），横向实测 Rust（Burn / tch / ort）、C++（whisper.cpp、demucs.cpp 的 GGML 后端）、PyTorch 与云端在 CPU / Vulkan / ROCm 等设备上的推理表现。同一套底层能力（模型加载、权重 dtype 泵、后端抽象、基准与数值校验）支撑，故放在同一工作区。为 LocalDub 的语音步骤提供选型与实现，但它本身是覆盖全链路的独立实验线，不是某一环节的附属。
 
 ##### 项目业绩
 
 1. 音源分离选型：同一模型横比 6 种后端，定位瓶颈在通用栈而非硬件（同机核显上 whisper Vulkan RTF 0.081，远快于 CPU，推翻"核显 Vulkan 必慢"），选定基于上游 WGSL 实现的 Vulkan 路径后RTF 0.11（tch 基线 1.03，约 9×）；用 corr 1.0000、与上游 CLI 逐样本一致（maxdiff 0）验证数值可信
-2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变),并用 PyTorch 参考逐段验证精度(VAE 编码 29.40 dB、特征编码 42.76 dB、LM 解码 27–40 dB)
+2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6（PyTorch CPU 基线 RTF 4.2–6.1）；并用 PyTorch 参考逐段验证精度(VAE 编码 29.40 dB、特征编码 42.76 dB、LM 解码 27–40 dB)
 3. 把「数值不一致」查成「构建差异」：Rust 与 PyTorch 的 LM 解码一开始只对上 1.97 dB，逐张量对照后定位为两侧 CFM 初始噪声来自不同随机流、差异被 pred_feat 回灌放大；固定噪声后一致到 27–40 dB。随后又发现同一二进制进程间可复现、但重新构建后结果就变（corr 1.0 ↔ 0.099），用四组对照排除缓存、精度、代码改动三种解释，指向 cubecl 在 Vulkan 上的kernel 选择，并据此撤回此前所有 f16 逐 token 结论
 4. 推理链路确定性：给 CFM 初始噪声与 VAE NoiseBlock 注入可复现 seed（手写 Box–Muller 对齐 N(0,1)），使同一文本可稳定复现波形、可做回归测试
 5. 并行与取舍：实现 batched prefill / 并行片段（per-batch 真实长度、padded 输入按索引取 last hidden state，无 batch 时走原串行路径）；按分段耗时（LM 46.6% / CFM+VAE+encoder 52.6%）决定只把 53% 搬 GPU、LM 留 CPU，避免全栈重写
