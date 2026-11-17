@@ -37,67 +37,6 @@ AI 算法，DevEx
 2. 其他后端开发 15-30k
 3. 高性能计算工程师 15-30k
 
-### 工作经历
-
-#### 一
-
-##### 公司名称
-
-菲克斯哈尔特重构交互网络（保定）有限公司
-
-##### 行业
-
-互联网
-
-##### 在职时间
-
-2025.07-2026.06
-
-##### 职位名称
-
-联合发起人
-
-##### 工作内容
-
-面向 Minecraft 资源创作与协作的平台：项目（作品）可发布多个版本
-并接受审核，支持团队与联合创作（发起 → 合同）。
-
-1. 制定模块划分与文件命名规范：约束单文件规模（300 行黄牌 /
-   500 行红牌）与导出数量（5–7），业务按 domain 拆分到 module
-   目录，统一 constants / tables / schemas / api 四类文件的命名与位置。
-2. 编写平台需求文档：定义项目／团队／社群／用户四类实体、
-   归属关系、默认频道规则，以及联合创作的两段状态流转
-   （发起 → 合同）。
-3. 实现认证与会话管理、频道与私聊数据模型、项目成员邀请与
-   通知流程；设计客户端直传对象存储的上传链路
-   （预签名 → 直传 → 创建版本），版本创建与审核状态挂钩。
-4. 先以 Next.js 单体组织业务，后迁移为 bun + turbo monorepo
-   （web / api / cdn + shared 层），管理后台独立成仓。
-5. 实现压缩包元信息推断：按 jar/zip 内的元数据文件
-   （neoforge.mods.toml、mods.toml、fabric.mod.json、mcmod.info、
-   pack.mcmeta）判定项目类型（mod / 资源包 / 数据包）、Loader、
-   Minecraft 版本与版本号；解析失败时回退到文件名匹配，
-   并处理 ${file.jarVersion} 占位符（从 MANIFEST.MF 取实际版本）、
-   NeoForge 的 Maven 版本区间到 MC 版本的换算。
-6. 发布流程：先用 Docker 打包，以 nginx upstream 切换实现蓝绿，
-   后改为 pm2 双实例按就绪信号优雅更新；编写部署手册。
-7. 建立 coding agent 协作约定：根与子包各一份 AGENTS.md，
-   约定禁止类型断言（as / satisfies / 手写泛型参数）、
-   泛型参数统一 T 前缀、schema 作为类型唯一来源，
-   并规定每次变更后跑类型检查；配套三个按包加载的本地 skill
-   （drizzle 数据建模、drizzle-orm、TanStack DB 数据源选型）。
-8. 阶段：已上线运行；合同签署环节未完全实现。
-
-##### 工作业绩
-
-项目中客户端用 TanStack DB、服务端用 Drizzle 各写一遍
-筛选逻辑，两份表示的语义需要手工保持一致；这一需求后来独立为
-agnostic-query 库，以查询 schema 作为中间表示在两侧双向转换
-
-##### 拥有技能
-
-tanstack, bun, nextjs, orpc, postgres, drizzle, hono
-
 ### 项目经历
 
 #### LocalDub
@@ -163,12 +102,14 @@ https://github.com/Nahida-aa/LocalDub
 
 ##### 项目业绩
 
-1. 音源分离选型：同一模型横比 6 种后端，定位瓶颈在通用栈而非硬件（同机核显上 whisper Vulkan RTF 0.081，远快于 CPU，推翻"核显 Vulkan 必慢"），选定基于上游 WGSL 实现的 Vulkan 路径后RTF 0.11（tch 基线 1.03，约 9×）；用 corr 1.0000、与上游 CLI 逐样本一致（maxdiff 0）验证数值可信
-2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6(优于PyTorch CPU); 并用 PyTorch 参考逐段验证精度(VAE 编码 29.40 dB、特征编码 42.76 dB、LM 解码 27–40 dB)
-3. 把数值不一致查成构建差异: Rust 与 PyTorch 的 LM 解码一开始只对上 1.97 dB，逐张量对照后定位为两侧 CFM 初始噪声来自不同随机流、差异被 pred_feat 回灌放大；固定噪声后一致到 27–40 dB。随后又发现同一二进制进程间可复现、但重新构建后结果就变(corr 1.0 - 0.099), 用四组对照排除缓存、精度、代码改动三种解释，指向 cubecl 在 Vulkan 上的kernel 选择，并据此修正此前所有 f16 逐 token 结论
-4. 推理链路确定性：给 CFM 初始噪声与 VAE NoiseBlock 注入可复现 seed（手写 Box–Muller 对齐 N(0,1)），使同一文本可稳定复现波形、可做回归测试
-5. 并行与取舍：实现 batched prefill / 并行片段（per-batch 真实长度、padded 输入按索引取 last hidden state，无 batch 时走原串行路径）；按分段耗时（LM 46.6% / CFM+VAE+encoder 52.6%）决定只把 53% 搬 GPU、LM 留 CPU，避免全栈重写
-6. 失败路径记录：openai-whisper + ROCm 25/25 SIGSEGV（连 tiny 也崩）、whisper.cpp HIPBLAS MES hang、PyTorch ROCm 缺 gfx1103 Tensile 内核；并验证 GPU Hang会连锁污染后续进程，实验改为每 trial 独立子进程
+1. 音源分离选型：同一 htdemucs 模型横比 tch(CPU) 1.03 / Burn-wgpu 2.41 / 基于上游 WGSL 实现的 Vulkan 路径 0.11（约 9×），说明瓶颈在通用栈的 kernel 实现而非核显本身；PyTorch ROCm 需 HSA_OVERRIDE 且两次运行 corr 仅 0.95，同卡上 demucs-wgpu 数值更稳
+2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6；用 PyTorch 参考逐阶段核对 f16 的一致性——特征编码 42.76 dB（f32 实现为 42.73 dB，f16 未带来额外损失），VAE 编码 29.40 dB（f32 实现为 90.35 dB，这部分是 f16 的代价）
+3. 把数值对不上查成采样随机性，再把残余差异归到构建层：
+  现象：Rust 与 PyTorch 的 LM 解码最初只对上 1.97 dB。
+  定位：逐张量对照，先确认是两侧 CFM 初始噪声来自不同随机流（差异被pred_feat回灌放大），两侧都固定噪声后一致到 27–40 dB，证明 LM 实现本身与参考一致。随后发现同一二进制进程间可复现，但不同构建之间预填充结果不同(该阶段不经过采样，无随机源，权重与输入相同)；排除进程级非确定性、精度（bf16 同样复现）、autotune 缓存三种解释后，判断为 cubecl 在 Vulkan 上的 kernel 选择差异。据此标注此前 f16 逐 token 结论需在固定构建下重验。
+4. 推理链路确定性：Burn 的 Tensor::random 未暴露种子，改为自己生成 N(0,1) 再灌入，为 CFM 初始噪声与 VAE NoiseBlock 注入可复现 seed（手写 Box–Muller 对齐分布），使同一文本在同一构建下可复现
+5. 分段耗时分析：用 forward hook 按叶子模块归组，量化 base_lm 36.2% / CFM 29.6% / VAE 13.6% / encoder 9.4%，并识别出 44.6% 的时间落在模块之外的 Python 胶水与 KV cache 管理上
+6. 失败路径记录：openai-whisper + ROCm 25/25 SIGSEGV（连 tiny 也崩）、whisper.cpp 的 HIPBLAS 构建长音频（170 s）MES hang（Vulkan 构建正常，RTF 0.081）、PyTorch ROCm 缺 gfx1103 Tensile 内核；并验证 GPU Hang 会连锁污染后续进程，实验改为每 trial 独立子进程
 
 ##### 项目链接
 
@@ -437,6 +378,67 @@ LocalDub 工作流完成人声分离 / 背景声分离、语音识别、
 
 本项目是把 LocalDub 用于实际业务的一次尝试，
 工程实现见上方「LocalDub」条目。
+
+### 工作经历
+
+#### 一
+
+##### 公司名称
+
+菲克斯哈尔特重构交互网络（保定）有限公司
+
+##### 行业
+
+互联网
+
+##### 在职时间
+
+2025.07-2026.06
+
+##### 职位名称
+
+联合发起人
+
+##### 工作内容
+
+面向 Minecraft 资源创作与协作的平台：项目（作品）可发布多个版本
+并接受审核，支持团队与联合创作（发起 → 合同）。
+
+1. 制定模块划分与文件命名规范：约束单文件规模（300 行黄牌 /
+   500 行红牌）与导出数量（5–7），业务按 domain 拆分到 module
+   目录，统一 constants / tables / schemas / api 四类文件的命名与位置。
+2. 编写平台需求文档：定义项目／团队／社群／用户四类实体、
+   归属关系、默认频道规则，以及联合创作的两段状态流转
+   （发起 → 合同）。
+3. 实现认证与会话管理、频道与私聊数据模型、项目成员邀请与
+   通知流程；设计客户端直传对象存储的上传链路
+   （预签名 → 直传 → 创建版本），版本创建与审核状态挂钩。
+4. 先以 Next.js 单体组织业务，后迁移为 bun + turbo monorepo
+   （web / api / cdn + shared 层），管理后台独立成仓。
+5. 实现压缩包元信息推断：按 jar/zip 内的元数据文件
+   （neoforge.mods.toml、mods.toml、fabric.mod.json、mcmod.info、
+   pack.mcmeta）判定项目类型（mod / 资源包 / 数据包）、Loader、
+   Minecraft 版本与版本号；解析失败时回退到文件名匹配，
+   并处理 ${file.jarVersion} 占位符（从 MANIFEST.MF 取实际版本）、
+   NeoForge 的 Maven 版本区间到 MC 版本的换算。
+6. 发布流程：先用 Docker 打包，以 nginx upstream 切换实现蓝绿，
+   后改为 pm2 双实例按就绪信号优雅更新；编写部署手册。
+7. 建立 coding agent 协作约定：根与子包各一份 AGENTS.md，
+   约定禁止类型断言（as / satisfies / 手写泛型参数）、
+   泛型参数统一 T 前缀、schema 作为类型唯一来源，
+   并规定每次变更后跑类型检查；配套三个按包加载的本地 skill
+   （drizzle 数据建模、drizzle-orm、TanStack DB 数据源选型）。
+8. 阶段：已上线运行；合同签署环节未完全实现。
+
+##### 工作业绩
+
+项目中客户端用 TanStack DB、服务端用 Drizzle 各写一遍
+筛选逻辑，两份表示的语义需要手工保持一致；这一需求后来独立为
+agnostic-query 库，以查询 schema 作为中间表示在两侧双向转换
+
+##### 拥有技能
+
+tanstack, bun, nextjs, orpc, postgres, drizzle, hono
 
 ### 教育经历
 
