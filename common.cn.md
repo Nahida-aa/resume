@@ -5,26 +5,31 @@
 
 ### 个人优势
 
-AI算法、DevEx、全栈
+AI 算法，DevEx
 
-1. wakatime 记录 coding 6666+ 小时
-2. 日常使用 Rust、TypeScript，Python, Arch Linux, C++
-3. **Rust**：写得了底层实现，也做得了工程基建——
-   自研 fnrpc（零分配中间件、端到端类型安全）、
-   aa-workflow（仅追加事件日志、策略中间件化）、
-   aa-session（直读多种异构会话存储），
-   熟悉 axum / tower / burn / ort 
-4. **TypeScript**：tanstack、solid、orpc、hono、
-   drizzle、bun，能靠类型编程写库
-   （agnostic-query 核心是类型定义，可整体摇树）
-5. 把 Rust 应用编译到 wasm 在浏览器运行（GPUI / Trunk），
-   处理多线程、共享内存与 COOP/COEP 隔离
-6. AI coding 1000+ 小时
-7. **开源贡献**：
+1. wakatime 记录 coding 6666+ 小时，近期 ai coding 1000+, 日常 Arch Linux
+2. **按问题的不确定性选推进方式**：
+   - 边界本身就清楚的（模块划分、命名规范、
+     机制与策略分层），先定下来
+   - 还不清楚的，先用 TS / Python 跑通、拿数值参考
+     （wf-demo 的 dataflow 调度、voxcpm_pytorch /
+     demucs_pytorch 作对照），探索后再用 Rust 落地
+3. **取舍要写清背景、决策与验证**：给项目建 ADR 目录
+   （aa-workflow 18 条、vox-lab 11 条），每条记录当时的背景、
+   采纳的方案、以及怎么验证它成立；被否决的选项和代价
+   一并写下，缺这些的不算「已接受」。选型时横比多个推理后端
+   并给出可复现的数值证据
+4. **开源贡献**：
    - gradio-rs#11：修复 Gradio 6.x i18n label
      反序列化兼容，含回归测试与线上 app 验证
-   - Zed#66120: agent 流式 tool call 修复, 含回归测试, mock llm提供商
-     
+   - Zed#66120：agent 流式 tool call 修复，
+     含回归测试与 mock LLM provider
+5. **习惯自己把公式推一遍**：数学与物理公式不记结论、
+   按第一性原理推；推完再向同学讲解——
+   `docs/learn/float.md` 就是把 bf16/f16/f32 的差异
+   归纳成三条可自推的主线（位分配 → 精度与范围的取舍 →
+   平台支持现状），而不是罗列资料
+
 ### 求职期望
 
 1. 算法工程师 15-30k
@@ -518,13 +523,12 @@ LocalDub 工作流完成人声分离 / 背景声分离、语音识别、
    位置-时间数据推算路口红绿灯周期）
 3. GAN / cGAN 实践（PyTorch，2024.11）
    - 自写生成器与判别器、对抗训练循环、条件生成
-   - 支持训练中断后继续训练；带 streamlit webui
+   - 训练支持按 epoch 保存权重并从指定 epoch 恢复；
    - 仓库：https://github.com/Nahida-aa/GAN
-   - 权重暂存云盘，未放仓库
 4. 个人博客（2022.10月起）：技术栈历经
-   Django → Vue + FastAPI → Next.js → Astro；
+   Django -> Vue + FastAPI -> Next.js -> Astro；
    现为 Astro + Markdown 的极简形态
-5. 高等数学(4.0/4.0 满绩)、计算机基础、计算机网络、
+5. 高等数学(满绩)、计算机基础、计算机网络、
    线性代数、计算机组成原理、概率与统计、离散数学
 6. 自写 python, cpp服务端框架实践
 
