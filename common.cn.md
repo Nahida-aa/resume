@@ -130,26 +130,18 @@ tanstack, bun, nextjs, orpc, postgres, drizzle, hono
 1. **语音链路**（人声分离 / 语音识别 / 语音克隆）由 vox-lab 承接：
   a. 多后端选型：同一模型横比 Rust（Burn）/ C++（whisper.cpp、demucs.cpp，GGML）/ PyTorch / 云端在 CPU / Vulkan / ROCm上的表现，定位瓶颈在通用栈而非硬件——同机核显上 whisper Vulkan
     RTF 0.081 远快于 CPU，推翻「核显 Vulkan 必慢」
-  b. 落地与验证：选定 WGSL/Vulkan 路径后分离 RTF 0.11（tch 基线
-    1.03，约 9×），用 corr 1.0000 与上游 CLI 逐样本一致（maxdiff 0）
-    验证数值可信
+  b. 落地与验证：选定 WGSL/Vulkan 路径后分离 RTF 0.11(tch 基线1.03，约 9×)，用 corr 1.0000 与上游 CLI 逐样本一致（maxdiff 0）验证数值可信
   c. 后端能力探测：780M(gfx1103)上 Burn/CubeCL 不支持 bf16 matmul，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6（PyTorch CPU 基线 4.2–6.1）；并写探针覆盖加减乘除、标量、sigmoid/sqrt/exp 与多维输入，确认 elementwise 一侧无误
   d. 结果可靠性：记录 ROCm 25/25 SIGSEGV、HIPBLAS hang、缺
     gfx1103 Tensile 内核等失败路径；验证 GPU Hang 会连锁污染
     后续进程，实验改为每 trial 独立子进程
 2. 视觉链路（字幕关键帧识别 / 字幕 OCR）由 vision-lab 承接：
-  a. 跨语言横比：字幕 OCR 建 cpp / py / rust 三实现基准，
-    同权重同线程下发现差距集中在宿主侧（numpy 归一化每帧
-    新建 ~115MB 临时数组、det→rec 首帧惩罚），而非推理内核——
-    三者最终调用同一份 C++ 内核，据此把优化落在预处理与
-    调用方式上（单帧 442→365ms）
+  a. 探索字幕OCR发现差距集中在宿主侧(numpy 归一化每帧新建 ~115MB 临时数组、det->rec 首帧惩罚)，据此把优化落在预处理与调用方式上(单帧 442->365ms)
   b. 正确性对齐：Rust 复刻 C++ 版 VideoSubFinder，逐帧比对到段边界差 ≤1ms（4 段差异仅原版段尾固有 1 帧），并反查出原版 cli 分支的帧同步 bug 与 align 默认值差异
 
 3. 从中抽出两个可复用的 Rust 库（可复用性排序）：
-  1. aa_workflow_core：持久执行引擎，核心是仅追加事件日志，
-     凭已持久化的日志跳过已运行的步骤
-  2. fnrpc：用属性宏在编译期收集函数类型信息，
-     生成路由 schema 与 TS 类型
+  1. aa_workflow_core：持久执行引擎，核心是仅追加事件日志，凭已持久化的日志跳过已运行的步骤
+  2. fnrpc：用属性宏在编译期收集函数类型信息，生成路由 schema 与 TS 类型
 
 ##### 项目链接
 
@@ -172,8 +164,8 @@ https://github.com/Nahida-aa/LocalDub
 ##### 项目业绩
 
 1. 音源分离选型：同一模型横比 6 种后端，定位瓶颈在通用栈而非硬件（同机核显上 whisper Vulkan RTF 0.081，远快于 CPU，推翻"核显 Vulkan 必慢"），选定基于上游 WGSL 实现的 Vulkan 路径后RTF 0.11（tch 基线 1.03，约 9×）；用 corr 1.0000、与上游 CLI 逐样本一致（maxdiff 0）验证数值可信
-2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6（PyTorch CPU 基线 RTF 4.2–6.1）；并用 PyTorch 参考逐段验证精度(VAE 编码 29.40 dB、特征编码 42.76 dB、LM 解码 27–40 dB)
-3. 把「数值不一致」查成「构建差异」：Rust 与 PyTorch 的 LM 解码一开始只对上 1.97 dB，逐张量对照后定位为两侧 CFM 初始噪声来自不同随机流、差异被 pred_feat 回灌放大；固定噪声后一致到 27–40 dB。随后又发现同一二进制进程间可复现、但重新构建后结果就变（corr 1.0 ↔ 0.099），用四组对照排除缓存、精度、代码改动三种解释，指向 cubecl 在 Vulkan 上的kernel 选择，并据此撤回此前所有 f16 逐 token 结论
+2. TTS 后端：Radeon 780M(gfx1103)上 Burn/CubeCL 无 bf16 matmul 支持，改用 f16 后端绕过(同 2 字节、容量不变)，Vulkan RTF 3.9–5.6(优于PyTorch CPU); 并用 PyTorch 参考逐段验证精度(VAE 编码 29.40 dB、特征编码 42.76 dB、LM 解码 27–40 dB)
+3. 把数值不一致查成构建差异: Rust 与 PyTorch 的 LM 解码一开始只对上 1.97 dB，逐张量对照后定位为两侧 CFM 初始噪声来自不同随机流、差异被 pred_feat 回灌放大；固定噪声后一致到 27–40 dB。随后又发现同一二进制进程间可复现、但重新构建后结果就变(corr 1.0 - 0.099), 用四组对照排除缓存、精度、代码改动三种解释，指向 cubecl 在 Vulkan 上的kernel 选择，并据此修正此前所有 f16 逐 token 结论
 4. 推理链路确定性：给 CFM 初始噪声与 VAE NoiseBlock 注入可复现 seed（手写 Box–Muller 对齐 N(0,1)），使同一文本可稳定复现波形、可做回归测试
 5. 并行与取舍：实现 batched prefill / 并行片段（per-batch 真实长度、padded 输入按索引取 last hidden state，无 batch 时走原串行路径）；按分段耗时（LM 46.6% / CFM+VAE+encoder 52.6%）决定只把 53% 搬 GPU、LM 留 CPU，避免全栈重写
 6. 失败路径记录：openai-whisper + ROCm 25/25 SIGSEGV（连 tiny 也崩）、whisper.cpp HIPBLAS MES hang、PyTorch ROCm 缺 gfx1103 Tensile 内核；并验证 GPU Hang会连锁污染后续进程，实验改为每 trial 独立子进程
