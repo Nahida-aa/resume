@@ -23,7 +23,7 @@ AI算法、DevEx、全栈
 7. **开源贡献**：
    - gradio-rs#11：修复 Gradio 6.x i18n label
      反序列化兼容，含回归测试与线上 app 验证
-   - Zed#66120: agent 流式 tool call 修复, 含回归测试
+   - Zed#66120: agent 流式 tool call 修复, 含回归测试, mock llm提供商
      
 ### 求职期望
 
@@ -189,6 +189,13 @@ CPU / Vulkan / ROCm 等设备上的推理表现。
   bf16 elementwise multiply 有误（silu(23.75)≈3616、
   10*2=2560），写探针复现；改用 f16（同 2 字节、容量不变）
   后 Vulkan RTF 3.9–5.6，优于 PyTorch CPU 的 8.29
+- **把「数值不一致」查成「构建差异」**：Rust 与 PyTorch 的 LM 解码
+  一开始只对上 1.97 dB，逐张量对照后定位为两侧 CFM 初始噪声
+  来自不同随机流、差异被 pred_feat 回灌放大；固定噪声后
+  一致到 27–40 dB。随后又发现同一二进制进程间可复现、但
+  重新构建后结果就变（corr 1.0 ↔ 0.099），用四组对照排除
+  缓存、精度、代码改动三种解释，指向 cubecl 在 Vulkan 上的
+  kernel 选择，并据此撤回此前所有 f16 逐 token 结论
 - **推理链路确定性**：给 CFM 初始噪声与 VAE NoiseBlock 注入
   可复现 seed（手写 Box–Muller 对齐 N(0,1)），
   使同一文本可稳定复现波形、可做回归测试
